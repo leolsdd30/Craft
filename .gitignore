@@ -1,0 +1,37 @@
+# ============================================
+# Craft Platform - .gitignore
+# ============================================
+
+# === Logs ===
+logs/app.log
+logs/*.log
+
+# === Uploads (user content) ===
+assets/uploads/users/
+assets/uploads/jobs/
+!assets/uploads/.gitkeep
+
+# === Environment / Config ===
+config/database.php
+
+# === IDE & OS ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# === Dependencies ===
+/vendor/
+node_modules/
+
+# === Temp ===
+*.tmp
+*.bak
+*.cache
+
+# markdown files
+*.md
