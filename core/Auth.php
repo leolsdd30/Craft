@@ -33,7 +33,7 @@ class Auth {
      * Check if user is logged in
      */
     public static function check(): bool {
-        return isset($_SESSION['user_id']);
+        return isset($_SESSION['user_id']) && isset($_SESSION['user_role']);
     }
 
     /**
@@ -46,9 +46,9 @@ class Auth {
 
         return [
             'id'     => $_SESSION['user_id'],
-            'role'   => $_SESSION['user_role'],
-            'name'   => $_SESSION['user_name'],
-            'email'  => $_SESSION['user_email'],
+            'role'   => $_SESSION['user_role'] ?? 'homeowner',
+            'name'   => $_SESSION['user_name'] ?? '',
+            'email'  => $_SESSION['user_email'] ?? '',
             'avatar' => $_SESSION['user_avatar'] ?? null,
         ];
     }
@@ -64,7 +64,7 @@ class Auth {
      * Check if current user has specific role
      */
     public static function hasRole(string $role): bool {
-        return self::check() && $_SESSION['user_role'] === $role;
+        return self::check() && ($_SESSION['user_role'] ?? '') === $role;
     }
 
     /**
